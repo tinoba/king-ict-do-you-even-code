@@ -1,0 +1,10 @@
+body {
+	color: #FFF;
+	background-color: #bc1f25;
+	padding: 40px;
+}
+
+.alert-normal {
+	background: #FFF;
+	color:  #bc1f25;
+}

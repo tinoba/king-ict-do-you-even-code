@@ -3,6 +3,8 @@
     <color name="colorPrimary">#bb2227</color>
     <color name="colorPrimaryDark">#96171b</color>
     <color name="colorAccent">#bb2227</color>
+    <color name="grey">#aaaaaa</color>
+    <color name="primary_text">#434343</color>
 
     <color name="redDefault">#bb2227</color>
 </resources>
