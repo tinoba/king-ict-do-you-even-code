@@ -1,5 +1,6 @@
 package eu.tinoba.androidarcitecturetemplate.data.service;
 
+import eu.tinoba.androidarcitecturetemplate.data.api.models.request.RegisterInformation;
 import eu.tinoba.androidarcitecturetemplate.data.api.models.request.UserInformation;
 import eu.tinoba.androidarcitecturetemplate.data.api.models.response.LoginResponse;
 import io.reactivex.Single;
@@ -20,5 +21,10 @@ public final class NetworkServiceImpl implements NetworkService {
     @Override
     public Single<LoginResponse> getData(String id) {
         return Single.defer(() -> templateAPI.getData(id));
+    }
+
+    @Override
+    public Single<Object> register(RegisterInformation registerInformation) {
+        return Single.defer(() -> templateAPI.register(registerInformation));
     }
 }
