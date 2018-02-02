@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:padding="16dp"
+    tools:context=".ui.login.LoginActivity">
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_teamname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/login_activity_teamname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Team name"
+            android:imeOptions="actionNext" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/login_activity_input_layout_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/input_layout_teamname"
+        app:passwordToggleEnabled="true">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/login_activity_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/button_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="-16dp"
+        android:layout_marginLeft="-16dp"
+        android:layout_marginRight="-16dp"
+        android:background="@color/redDefault"
+        android:text="Login"
+        android:textColor="@android:color/white" />
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/login_activity_spin_kit"
+        style="@style/SpinKitView.Large.ThreeBounce"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="-16dp"
+        android:visibility="gone"
+        app:SpinKit_Color="@color/redDefault" />
+
+</RelativeLayout>
