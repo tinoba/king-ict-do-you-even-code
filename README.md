@@ -1,1 +1,3 @@
-# king-ict-do-you-even-code
+# Do you even code?
+
+**WEB:** http://kingict.rinkovec.com

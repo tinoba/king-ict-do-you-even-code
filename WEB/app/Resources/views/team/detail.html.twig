@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 form">
+                <h1>{{ team.teamname }}</h1>
+                <p>
+                    <strong>ID: </strong> {{ team.id }}
+                </p>
+                {% for member in team.members %}
+                    <div class="alert alert-normal">
+                        <p>
+                            <strong>First name: </strong> {{ member.name }}<br>
+                            <strong>Last name: </strong> {{ member.surname }}<br>
+                            <strong>E-mail: </strong> {{ member.mail }}
+                        </p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}

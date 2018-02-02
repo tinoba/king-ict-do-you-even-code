@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 form">
+                <h1>Register</h1>
+                {{ form_start(form) }}
+                {% if errors is defined %}
+                <div class="alert alert-danger">
+                    {% for error in errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {{ form_errors(form) }}
+                {{ form_row(form.teamname) }}
+                {{ form_row(form.password) }}
+
+                {{ form_label(form.members) }}
+
+                <div class="row js-members-wrapper"
+                     data-prototype="{{ form_widget(form.members.vars.prototype)|e('html_attr') }}"
+                     data-index="{{ form.members|length }}"
+                >
+                    {% for member in form.members %}
+                        {{ form_widget(member) }}
+                    {% endfor %}
+                    <a href="#" class="js-member-add">
+                        <span class="fa fa-plus-circle"></span>
+                        Add Another Member
+                    </a>
+                </div>
+                {% do form.members.setRendered %}
+                <br><br>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        jQuery(document).ready(function() {
+            var $wrapper = $('.js-members-wrapper');
+            $wrapper.on('click', '.js-remove-member', function(e) {
+                e.preventDefault();
+                jQuery(this).closest('.js-members-item')
+                    .hide({duration:1000})
+                    .remove();
+            });
+            $wrapper.on('click', '.js-member-add', function(e) {
+                e.preventDefault();
+                var prototype = $wrapper.data('prototype');
+                var index = $wrapper.data('index');
+                var newForm = prototype.replace(/__name__/g, index);
+                $wrapper.data('index', index + 1);
+                jQuery(this).before(newForm);
+            });
+        });
+    </script>
+{% endblock %}
