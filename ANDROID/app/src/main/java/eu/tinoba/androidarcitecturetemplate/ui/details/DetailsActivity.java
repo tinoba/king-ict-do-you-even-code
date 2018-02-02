@@ -3,6 +3,9 @@ package eu.tinoba.androidarcitecturetemplate.ui.details;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.ybq.android.spinkit.SpinKitView;
@@ -31,6 +34,12 @@ public class DetailsActivity extends BaseActivity implements DetailsView {
     @BindView(R.id.details_spin_kit)
     SpinKitView detailsSpinKit;
 
+    @BindView(R.id.members_view_scroll)
+    LinearLayout scrollView;
+
+    @BindView(R.id.team_name)
+    TextView teamName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +60,9 @@ public class DetailsActivity extends BaseActivity implements DetailsView {
     @Override
     public void showDetailsData(LoginResponse loginResponse) throws JSONException {
         String teamName = new JSONObject(loginResponse.Result).getString("TeamName");
-        Timber.e(teamName);
+
+        this.teamName.setText(teamName);
+
         JSONArray lista = new JSONArray(new JSONObject(loginResponse.Result).getString("Members"));
         for (int i = 0; i < 4; i++) {
 
@@ -60,11 +71,16 @@ public class DetailsActivity extends BaseActivity implements DetailsView {
                 String name = object.getString("Name");
                 String surname = object.getString("Surname");
                 String email = object.getString("Mail");
+
+                MemberView member = new MemberView(this);
+                member.setName(name + " " + surname);
+                member.setEmail(email);
+
+                scrollView.addView(member);
+
             } catch (Exception e) {
                 Timber.e(e);
             }
-
-
         }
 
         detailsSpinKit.setVisibility(View.GONE);

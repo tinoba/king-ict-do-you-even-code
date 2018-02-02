@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="8dp"
     tools:context=".ui.details.DetailsActivity">
 
     <com.github.ybq.android.spinkit.SpinKitView
@@ -14,6 +15,34 @@
         android:layout_centerInParent="true"
         app:SpinKit_Color="@color/redDefault" />
 
+    <LinearLayout
+        android:id="@+id/team_name_holder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
+        <TextView
+            android:id="@+id/team_name"
+            style="@style/Base.TextAppearance.AppCompat.Large"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:textColor="@color/primary_text" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_below="@id/team_name_holder"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/members_view_scroll"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </RelativeLayout>
